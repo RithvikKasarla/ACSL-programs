@@ -6,10 +6,11 @@ class main(object):
     """description of class"""
 
 
-g = game.game("75,7,3,8,8,7,T,5,9,A,6")
 
-g.play_game()
+with open("gamedata.txt", "r") as f:
+   lines = f.readlines()
+lines = [l.replace('\n', '') for l in lines ]
 
-e = game.game("80,9,T,7,8,K,A,3,5,Q,T")
-
-e.play_game()
+for line in lines:
+  g = game.game(line)
+  g.play_game()

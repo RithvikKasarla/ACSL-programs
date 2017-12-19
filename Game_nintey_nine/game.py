@@ -1,5 +1,4 @@
 import player
-import gambler
 import deck
 import dealer
 
@@ -13,7 +12,7 @@ class game(object):
 
     def update_points(self, card):
       if card == 14:
-        if card + 14 > 99:
+        if self.points + 14 > 99:
           card = 1
       if card == 9:
         card = 0
@@ -22,14 +21,9 @@ class game(object):
       self.points = self.points + card
 
     def is_gameover(self):
-      if self.points > 99:
-        gameover = True
-      else:
-        gameover= False
-      return gameover
+      return self.points > 99
 
     def play_game(self):
-      print("You are playing the game")
       while self.is_gameover() == False:
         self.update_points(self.p.play_a_card())
         self.p.pick_a_card()
